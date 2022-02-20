@@ -1,3 +1,3 @@
-## Тестовое задание React
+## Study login with next
 
-Demo - [https://welbex-test-react.vercel.app/](https://welbex-test-react.vercel.app/)
+Demo - [https://auth-nextjs-study.vercel.app/](https://auth-nextjs-study.vercel.app/)
