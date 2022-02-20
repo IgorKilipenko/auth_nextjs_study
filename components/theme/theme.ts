@@ -4,11 +4,18 @@ import {
     ComponentStyleConfig,
 } from '@chakra-ui/react'
 import { mode } from '@chakra-ui/theme-tools'
-import type { Styles, StyleFunctionProps } from '@chakra-ui/theme-tools'
+import type { Styles } from '@chakra-ui/theme-tools'
 
 const Input: ComponentStyleConfig = {
-    baseStyle: {
-        borderColor: 'red.600',
+    variants: {
+        flushed: {
+            field: {
+                borderColor: 'gray.300',
+            }
+        },
+    },
+    defaultProps: {
+        variant: 'flushed',
     },
 }
 
@@ -36,7 +43,7 @@ const styles: Styles = {
 const customTheme = extendTheme(
     {
         config: {
-            cssVarPrefix: 'ck',
+            cssVarPrefix: 'chakra',
         },
         styles,
         components: {
@@ -45,7 +52,6 @@ const customTheme = extendTheme(
     },
     withDefaultColorScheme({
         colorScheme: 'green' /*gray*/,
-
     })
 )
 
