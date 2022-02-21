@@ -13,17 +13,17 @@ import {
     Link,
     Input,
     Box,
+    SimpleGrid,
+    Grid,
+    GridItem,
 } from '@chakra-ui/react'
 import { social } from '@Components/view/icons'
 import NextLink from 'next/link'
 
+
 const iconCss = { boxSize: 10 }
 const Login = () => {
-    const styles = {
-        lineColor: {
-            //borderColor: 'red.300',
-        },
-    }
+
     return (
         <Flex h="100%" justify="center">
             <Container
@@ -43,7 +43,7 @@ const Login = () => {
                         </NextLink>
                     </Stack>
 
-                    <Divider orientation="horizontal" {...styles.lineColor} />
+                    <Divider orientation="horizontal" />
 
                     <Heading fontSize={'md'}>Sign up with social</Heading>
 
@@ -60,9 +60,9 @@ const Login = () => {
                     </HStack>
 
                     <HStack w="100%">
-                        <Divider {...styles.lineColor}></Divider>
+                        <Divider></Divider>
                         <Text>Or</Text>
-                        <Divider {...styles.lineColor}></Divider>
+                        <Divider></Divider>
                     </HStack>
 
                     <Heading fontSize={'md'}>Sign up with email</Heading>
@@ -72,27 +72,23 @@ const Login = () => {
                             placeholder="Email address"
                             variant="flushed"
                             size="lg"
-                            {...styles.lineColor}
                         />
-                        <Stack direction={['column', 'row']} spacing={[0, 10]}>
-                            <Input
-                                placeholder="First name"
-                                variant="flushed"
-                                size="lg"
-                                {...styles.lineColor}
-                            />
-                            <Input
-                                placeholder="Last name"
-                                variant="flushed"
-                                size="lg"
-                                {...styles.lineColor}
-                            />
-                        </Stack>
+                        <Grid
+                            w="100%"
+                            templateColumns={['1fr', '2fr 3fr']}
+                            gap={[0, 10]}>
+                            <GridItem>
+                                <Input placeholder="First name" size="lg" />
+                            </GridItem>
+                            <GridItem>
+                                <Input placeholder="Last name" size="lg" />
+                            </GridItem>
+                        </Grid>
+                        <Input placeholder="First name" size="lg" />
                         <Input
-                            placeholder="First name"
+                            placeholder="Password"
                             variant="flushed"
                             size="lg"
-                            {...styles.lineColor}
                         />
                     </VStack>
                 </VStack>
