@@ -1,5 +1,11 @@
-import { useEffect } from "react"
-import { MotionValue, useMotionValue, isMotionValue, animate, AnimationOptions } from "framer-motion"
+import { useEffect } from 'react'
+import {
+    MotionValue,
+    useMotionValue,
+    isMotionValue,
+    animate,
+    AnimationOptions,
+} from 'framer-motion'
 
 /**
  * Creates a `MotionValue` that, when `set` on the source, will use a transition animation to animate to its new state.
