@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, useCallback, useMemo } from 'react'
+import { useEffect, useState, useCallback, useMemo } from 'react'
 
 const testRoutes: Array<string> = [
     '/',
@@ -10,7 +10,10 @@ const useScrollRouter = (
     routes: Array<string> = testRoutes
 ) => {
     const index = useMemo(() => {
-        return Math.max(routes.findIndex(v => currentPath === v ), 0)
+        return Math.max(
+            routes.findIndex((v) => currentPath === v),
+            0
+        )
     }, [routes, currentPath])
     const [current, setCurrent] = useState({ roure: routes[index], index })
     const next = useCallback(() => {
