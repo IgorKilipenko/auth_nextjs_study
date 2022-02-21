@@ -16,7 +16,7 @@ const actions = {
     todos: { ...todoSlice.actions },
 }
 
-const configureAppStore = ({ theme, components, todos }) => {
+const configureAppStore = ({ components, todos }) => {
     const reducer = {
         components: componentsSlice.reducer,
         todos: todoSlice.reducer,

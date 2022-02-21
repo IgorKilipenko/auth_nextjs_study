@@ -1,7 +1,7 @@
-import { Icon } from '@chakra-ui/react'
+import { Icon, IconProps } from '@chakra-ui/react'
 import { FaFacebook, FaGoogle } from 'react-icons/fa'
 
-const GoogleColoredIcon = (props) => {
+const GoogleColoredIcon = (props:IconProps) => {
     return (
         <Icon /*width="50" height="50"*/ viewBox="0 0 25 25" {...props}>
             {/* <rect id="Background" width="50" height="50" rx="25" fill="#fff" /> */}
@@ -54,7 +54,7 @@ const GoogleColoredIcon = (props) => {
     )
 }
 
-const GoogleColoredIconV2 = (props) => {
+const GoogleColoredIconV2 = (props:IconProps) => {
     return (
         <Icon viewBox="0 0 48 48" {...props}>
             <path

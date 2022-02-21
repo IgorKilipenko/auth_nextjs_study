@@ -12,18 +12,17 @@ import {
     Stack,
     Link,
     Input,
-    Box,
-    SimpleGrid,
     Grid,
     GridItem,
 } from '@chakra-ui/react'
 import { social } from '@Components/view/icons'
 import NextLink from 'next/link'
+import { useState } from 'react'
 
 
 const iconCss = { boxSize: 10 }
-const Login = () => {
-
+const Login = (props) => {
+    const [showPassword, setShowPassword] = useState(false)
     return (
         <Flex h="100%" justify="center">
             <Container
@@ -86,6 +85,7 @@ const Login = () => {
                         </Grid>
                         <Input placeholder="First name" size="lg" />
                         <Input
+                            type={showPassword ? 'text' : 'password'}
                             placeholder="Password"
                             variant="flushed"
                             size="lg"
