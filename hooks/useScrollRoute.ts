@@ -8,7 +8,7 @@ const testRoutes: Array<string> = [
 const useScrollRouter = (
     currentPath = '/',
     routes: Array<string> = testRoutes
-) => {
+) => {   
     const index = useMemo(() => {
         return Math.max(
             routes.findIndex((v) => currentPath === v),
@@ -31,8 +31,8 @@ const useScrollRouter = (
     }, [routes])
 
     useEffect(() => {
-        setCurrent({ roure: routes[0], index: 0 })
-    }, [routes])
+        setCurrent({ roure: routes[index], index })
+    }, [routes, index])
     return { current: current.roure, next, back, index: current.index }
 }
 

@@ -4,7 +4,7 @@ import { useRef } from 'react'
 import { Box, useTheme } from '@chakra-ui/react'
 import { useEffect, useMemo, useCallback } from 'react'
 import { useAccumWhell, useScrollRouter } from '@Hooks'
-import Router from 'next/router'
+import Router, { useRouter } from 'next/router'
 
 const Layout = (props) => {
     const { children } = props
@@ -13,7 +13,8 @@ const Layout = (props) => {
     const dispatch = useDispatch()
     const timer = useRef(0)
     const routes = useMemo(() => ['/', '/login'], [])
-    const { current, next, back } = useScrollRouter('/', routes)
+    const pathname = useRouter().pathname
+    const { current, next, back } = useScrollRouter(pathname, routes)
     const { summ, push } = useAccumWhell(200)
 
     const handleWheel = ({ deltaY }) => {
@@ -21,7 +22,9 @@ const Layout = (props) => {
     }
 
     const pushPage = useCallback((href) => {
-        Router.push(href)
+        if (Router.isReady) {
+            Router.push(href).catch(console.error)
+        }
     }, [])
 
     useEffect(() => {
