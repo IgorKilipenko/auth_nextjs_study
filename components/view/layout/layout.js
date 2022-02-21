@@ -2,6 +2,9 @@ import { useDispatch } from 'react-redux'
 import { actions as storeActions, useMainComponentMousePosition } from '@Store'
 import { useRef } from 'react'
 import { Box, useTheme } from '@chakra-ui/react'
+import { useEffect, useMemo, useCallback } from 'react'
+import { useAccumWhell, useScrollRouter } from '@Hooks'
+import Router from 'next/router'
 
 const Layout = (props) => {
     const { children } = props
@@ -9,6 +12,29 @@ const Layout = (props) => {
     const mousePosition = useMainComponentMousePosition()
     const dispatch = useDispatch()
     const timer = useRef(0)
+    const routes = useMemo(() => ['/', '/login'], [])
+    const { current, next, back } = useScrollRouter('/', routes)
+    const { summ, push } = useAccumWhell(200)
+
+    const handleWheel = ({ deltaY }) => {
+        push(deltaY)
+    }
+
+    const pushPage = useCallback((href) => {
+        Router.push(href)
+    }, [])
+
+    useEffect(() => {
+        pushPage(current)
+    }, [current, pushPage])
+
+    useEffect(() => {
+        if (summ > 0) {
+            next()
+        } else if (summ < 0) {
+            back()
+        }
+    }, [summ, next, back])
 
     const hadleMouseMove = (e) => {
         const now = Date.now()
@@ -47,6 +73,7 @@ const Layout = (props) => {
     }
     return (
         <Box
+            onWheel={(e) => handleWheel(e)}
             as="main"
             fontSize={theme.fontSizes.md}
             position="fixed"
