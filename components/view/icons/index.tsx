@@ -1,7 +1,7 @@
 import { Icon, IconProps } from '@chakra-ui/react'
 import { FaFacebook, FaGoogle } from 'react-icons/fa'
 
-const GoogleColoredIcon = (props:IconProps) => {
+const GoogleColoredIcon = (props: IconProps) => {
     return (
         <Icon /*width="50" height="50"*/ viewBox="0 0 25 25" {...props}>
             {/* <rect id="Background" width="50" height="50" rx="25" fill="#fff" /> */}
@@ -54,7 +54,7 @@ const GoogleColoredIcon = (props:IconProps) => {
     )
 }
 
-const GoogleColoredIconV2 = (props:IconProps) => {
+const GoogleColoredIconV2 = (props: IconProps) => {
     return (
         <Icon viewBox="0 0 48 48" {...props}>
             <path
@@ -78,12 +78,38 @@ const GoogleColoredIconV2 = (props:IconProps) => {
 }
 
 const social = {
-    facebook: (props) => (
+    facebook: (props: IconProps) => (
         <Icon as={FaFacebook} {...{ fill: 'blue.700', ...props }} />
     ),
-    google: (props) => <Icon as={FaGoogle} {...props} />,
-    googleColored: (props) => <GoogleColoredIcon {...props} />,
-    //googleV2: (props) => <GoogleColoredIconV2 {...props} />,
+    google: (props: IconProps) => <Icon as={FaGoogle} {...props} />,
+    googleColored: (props: IconProps) => <GoogleColoredIcon {...props} />,
+    googleColoredV2: (props) => <GoogleColoredIconV2 {...props} />,
 }
 
-export { social }
+declare interface ShowPasswordIconProps extends IconProps {
+    show: boolean
+}
+
+const ShowPasswordIcon = ({ show, ...props }: ShowPasswordIconProps) => {
+    return (
+        <Icon
+            viewBox="0 0 36 36"
+            aria-hidden="true"
+            className="spectrum-Icon spectrum-Icon--sizeS PasswordField-VisibilityToggle__Icon"
+            {...props}>
+            {!show ? (
+                <>
+                    <path d="M14.573 9.44A9.215 9.215 0 0126.56 21.427l2.945 2.945c2.595-2.189 4.245-4.612 4.245-6.012 0-2.364-4.214-7.341-9.137-9.78A14.972 14.972 0 0018 6.937a14.36 14.36 0 00-4.989.941z" />
+                    <path d="M33.794 32.058L22.328 20.592A5.022 5.022 0 0023.062 18a4.712 4.712 0 00-.174-1.2 2.625 2.625 0 01-2.221 1.278A2.667 2.667 0 0118 15.417a2.632 2.632 0 011.35-2.27 4.945 4.945 0 00-1.35-.209 5.022 5.022 0 00-2.592.734L3.942 2.206a.819.819 0 00-1.157 0l-.578.579a.817.817 0 000 1.157l6.346 6.346c-3.816 2.74-6.3 6.418-6.3 8.072 0 3 7.458 10.7 15.686 10.7a16.455 16.455 0 007.444-1.948l6.679 6.679a.817.817 0 001.157 0l.578-.578a.818.818 0 00-.003-1.155zM18 27.225a9.2 9.2 0 01-7.321-14.811l2.994 2.994A5.008 5.008 0 0012.938 18 5.062 5.062 0 0018 23.063a5.009 5.009 0 002.592-.736l2.994 2.994A9.144 9.144 0 0118 27.225z" />
+                </>
+            ) : (
+                <>
+                    <path d="M24.613 8.58A14.972 14.972 0 0018 6.937c-8.664 0-15.75 8.625-15.75 11.423 0 3 7.458 10.7 15.686 10.7 8.3 0 15.814-7.706 15.814-10.7 0-2.36-4.214-7.341-9.137-9.78zM18 27.225A9.225 9.225 0 1127.225 18 9.225 9.225 0 0118 27.225z" />
+                    <path d="M20.667 18.083A2.667 2.667 0 0118 15.417a2.632 2.632 0 011.35-2.27 4.939 4.939 0 00-1.35-.209A5.063 5.063 0 1023.063 18a4.713 4.713 0 00-.175-1.2 2.625 2.625 0 01-2.221 1.283z" />
+                </>
+            )}
+        </Icon>
+    )
+}
+
+export { social, ShowPasswordIcon }
