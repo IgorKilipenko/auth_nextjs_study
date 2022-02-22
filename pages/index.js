@@ -1,6 +1,4 @@
-import { GridItem } from '@chakra-ui/react'
-import { Button } from '@chakra-ui/react'
-import { useTheme, Grid, Flex } from '@chakra-ui/react'
+import { useTheme, Grid, Flex, Button, GridItem } from '@chakra-ui/react'
 import Head from 'next/head'
 
 const HomePage = (/*props*/) => {
@@ -26,6 +24,7 @@ const HomePage = (/*props*/) => {
                         .filter((text) => text != '')
                         .map((text, i) => {
                             return (
+                                
                                 <GridItem key={i}>
                                     <Button w="100%">{text}</Button>
                                 </GridItem>

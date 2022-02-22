@@ -8,21 +8,22 @@ import {
     HStack,
     VStack,
     Text,
-    Button,
     Stack,
     Link,
     Input,
     Grid,
     GridItem,
+    Button,
+    InputRightElement,
+    InputGroup,
+    IconButton,
 } from '@chakra-ui/react'
-import { social } from '@Components/view/icons'
+import { ShowPasswordIcon, social } from '@Components/view/icons'
 import NextLink from 'next/link'
 import { useState } from 'react'
+import { Password, ProviderIcons } from './components'
 
-
-const iconCss = { boxSize: 10 }
-const Login = (props) => {
-    const [showPassword, setShowPassword] = useState(false)
+const Login = (/*props*/) => {
     return (
         <Flex h="100%" justify="center">
             <Container
@@ -46,17 +47,7 @@ const Login = (props) => {
 
                     <Heading fontSize={'md'}>Sign up with social</Heading>
 
-                    <HStack spacing={5} justify="start" align="center">
-                        <Button variant="link">
-                            {social.google({ ...iconCss })}
-                        </Button>
-                        <Button variant="link">
-                            {social.googleColored({ ...iconCss })}
-                        </Button>
-                        <Button variant="link">
-                            {social.facebook({ ...iconCss })}
-                        </Button>
-                    </HStack>
+                    <ProviderIcons />
 
                     <HStack w="100%">
                         <Divider></Divider>
@@ -84,13 +75,9 @@ const Login = (props) => {
                             </GridItem>
                         </Grid>
                         <Input placeholder="First name" size="lg" />
-                        <Input
-                            type={showPassword ? 'text' : 'password'}
-                            placeholder="Password"
-                            variant="flushed"
-                            size="lg"
-                        />
+                        <Password />
                     </VStack>
+                    <Button isDisabled={false}>OK</Button>
                 </VStack>
             </Container>
         </Flex>
