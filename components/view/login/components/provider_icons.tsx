@@ -2,6 +2,7 @@ import { HStack, Button } from '@chakra-ui/react'
 import { social, CustomIconButton } from '@Components/view/icons'
 import type { HoveredIconProps } from '@Components/view/icons'
 import { useState } from 'react'
+import { useSession, signIn, signOut, getProviders } from "next-auth/react"
 
 const boxSize = 10
 

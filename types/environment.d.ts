@@ -13,8 +13,11 @@ declare namespace NodeJS {
         AUTH0_ID: string
         AUTH0_SECRET: string
         EMAIL_SERVICE: string
-        EMAIL_USER: string
+        EMAIL_SMTP_HOST: string
+        EMAIL_SMTP_PORT: number
+        EMAIL_SMTP_SECURE: boolean
         EMAIL_SERVER_PASSWORD: string
         EMAIL_FROM: string
+        SECRET: string
     }
 }

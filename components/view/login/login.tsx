@@ -22,8 +22,11 @@ import { ShowPasswordIcon, social } from '@Components/view/icons'
 import NextLink from 'next/link'
 import { useState } from 'react'
 import { Password, ProviderIcons } from './components'
+import { useSession, signIn, signOut, getProviders } from "next-auth/react"
 
 const Login = (/*props*/) => {
+    useSession()
+    const [email, setEmail] = useState('')
     return (
         <Flex h="100%" justify="center">
             <Container
@@ -62,6 +65,7 @@ const Login = (/*props*/) => {
                             placeholder="Email address"
                             variant="flushed"
                             size="lg"
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                         <Grid
                             w="100%"
@@ -77,7 +81,7 @@ const Login = (/*props*/) => {
                         <Input placeholder="First name" size="lg" />
                         <Password />
                     </VStack>
-                    <Button isDisabled={false}>OK</Button>
+                    <Button isDisabled={false} onClick={() => signIn("email", {email})}>OK</Button>
                 </VStack>
             </Container>
         </Flex>
